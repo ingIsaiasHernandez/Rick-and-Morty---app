@@ -70,3 +70,74 @@ html{
   border: 2px white solid ;
 
 }
+
+.residen-box{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 0;
+  justify-items: center;
+  align-items: center;
+  row-gap: 2rem;
+}
+
+.resident-content{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+}
+
+.residen-img{
+
+ 
+}
+
+.residen{
+
+}
+
+.resident-text{
+  text-align: left;
+}
+
+.status{
+  height: 1.5rem;
+  width: 8rem;
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  background: #062226;
+  border-radius: 0 12px 12px 0;
+  padding-left: 2rem;
+  font-size: 1.1rem;
+}
+
+.circle-Alive{
+  width: 0;
+  height: 0;
+  border: .5rem solid green;
+  border-radius: 50%;
+  position: absolute;
+  left: .4rem;
+  top: .2rem;
+}
+
+.circle-Dead{
+  width: 0;
+  height: 0;
+  border: .5rem solid red;
+  border-radius: 50%;
+  position: absolute;
+  left: .4rem;
+  top: .2rem;
+}
+
+.circle-unknown{
+  width: 0;
+  height: 0;
+  border: .5rem solid grey;
+  border-radius: 50%;
+  position: absolute;
+  left: .4rem;
+  top: .2rem;
+}
