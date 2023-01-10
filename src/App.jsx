@@ -1,32 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useState , useEffect } from 'react'
 import './App.css'
+import axios from 'axios'; 
+import logo from './assets/img/logo.png'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [isConexion, setIsConexion] = useState({});
+
+  useEffect(() => {
+
+    const idNumber = Math.floor(Math.random() * 125 + 1);
+
+    axios.get(`https://rickandmortyapi.com/api/location/${idNumber}`)
+      .then(res => setIsConexion(res.data));
+
+
+
+  },[]);
+
+  console.log(isConexion);
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      
+      <div className="header">
+        <div className="logo-box">
+          <img src={logo} alt="Logo" className="logo" />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="info-box">
+          <div className="item-info-1">
+            <h3>type: {isConexion.type}</h3>
+          </div>
+          <div className="item-info-2">
+            <h1>{isConexion.name}</h1>
+            <h3>dimension: {isConexion.dimension}</h3>
+          </div>
+          <div className="item-info-3">
+            <h3> population: {isConexion.residents?.length}</h3>
+          </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className="search-box">
+        <input type="text" className="search" placeholder='type a location id'/>
+        <button className="search-btn">Search</button>
+      </div>
+    
     </div>
   )
 }
